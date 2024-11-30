@@ -1,0 +1,56 @@
+﻿@model Organization
+
+<div class="container">
+    <section class="team-details mb-5">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-lg-5">
+                    <div class="team-details__img">
+                        <img src="@(Model.OrganizationImage ?? Url.Content("~/assets/images/team/team-details-img-1.jpg"))"
+                             alt="@Model.OrganizationName - Image" class="img-fluid rounded shadow">
+                    </div>
+                </div>
+                <div class="col-lg-7">
+                    <div class="team-details__right">
+                        <div class="team-details__title-box">
+                            <h3 class="team-details__title">@Model.OrganizationName</h3>
+                            <p class="team-details__text">@Model.Overview</p>
+                        </div>
+
+                        <div class="team-details__contact">
+                            <h4>Contact Information</h4>
+                            <p><strong>Address:</strong> @Model.Address</p>
+                            <p><strong>Contact:</strong> @Model.ContactInfo</p>
+                            @if (!string.IsNullOrEmpty(Model.WebsiteUrl))
+                            {
+                                <p><strong>Website:</strong> <a href="@Model.WebsiteUrl" target="_blank" class="text-danger">@Model.WebsiteUrl</a></p>
+                            }
+                            @if (!string.IsNullOrEmpty(Model.SocialMediaLink))
+                            {
+                                <p><strong>Social Media:</strong> <a href="@Model.SocialMediaLink" target="_blank" class="text-danger">@Model.SocialMediaLink</a></p>
+                            }
+                        </div>
+
+                        <div class="team-details__projects">
+                            <h4>Projects</h4>
+                            <p>@Model.Projects</p>
+                        </div>
+
+                        <div class="team-details__creative">
+                            <h5 class="team-details__creative-title">Creative Directions</h5>
+                            <p class="team-details__creative-text">
+                                @* Placeholder for creative description or other related information *@
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    }
+    <div class="text-center">
+       
+        <a asp-action="Index" class="btn btn-link">Back to List</a>
+    </div>
+
+</div>

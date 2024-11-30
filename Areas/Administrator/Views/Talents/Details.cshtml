@@ -1,0 +1,163 @@
+﻿@model Talent
+<style>
+    body {
+        font-family: 'Arial', sans-serif;
+        background-color: #ffffff;
+        color: #333;
+        margin: 0;
+        padding: 0;
+    }
+
+    .page-header {
+        position: relative;
+        padding: 60px 0;
+        color: #fff;
+        text-align: center;
+    }
+
+    .page-header__bg {
+        height: 300px;
+        background-position: center;
+        background-size: cover;
+    }
+
+    .page-header__title {
+        font-size: 36px;
+        font-weight: bold;
+        color: #000;
+    }
+
+    .talent-details-container {
+        margin: 20px auto;
+        padding: 20px;
+        border: 1px solid #ddd;
+        border-radius: 10px;
+        background-color: #f9f9f9;
+        max-width: 1000px;
+        display: flex;
+        flex-direction: column;
+        gap: 40px;
+    }
+
+    .talent-title {
+        font-size: 28px;
+        color: #000;
+        margin-bottom: 20px;
+        text-align: center;
+    }
+
+    .profile-picture {
+        display: flex;
+        justify-content: center;
+    }
+
+        .profile-picture img {
+            max-width: 150px;
+            height: auto;
+            border-radius: 10px;
+            border: 2px solid #a70000;
+        }
+
+    .talent-info {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 10px;
+        text-align: left;
+    }
+
+        .talent-info p {
+            font-size: 16px;
+            margin: 5px 0;
+        }
+
+    .biography, .skills, .awards, .work-samples, .additional-info, .talent-status {
+        margin-top: 20px;
+        text-align: left;
+    }
+
+    h3 {
+        margin-bottom: 10px;
+        font-weight: bold;
+        color: #000;
+    }
+
+    .talent-status p {
+        font-weight: bold;
+        color: #a70000;
+    }
+
+
+</style>
+
+
+<div class="talent-details-container">
+    <h1 class="talent-title">@Model.FullName's Profile</h1>
+
+
+    @if (!string.IsNullOrEmpty(Model.ProfilePicture))
+    {
+        <div class="profile-picture">
+            <img src="@Url.Content(Model.ProfilePicture)" alt="Profile Picture" class="img-fluid" />
+        </div>
+    }
+
+
+    <div class="talent-info">
+        <p><strong>Full Name:</strong> @Model.FullName</p>
+        <p><strong>Email:</strong> @Model.Email</p>
+        <p><strong>Phone Number:</strong> @Model.PhoneNumber</p>
+        <p><strong>Date of Birth:</strong> @Model.DateOfBirth.ToString("MMMM dd, yyyy")</p>
+        <p><strong>City:</strong> @Model.City</p>
+    </div>
+
+
+    @if (!string.IsNullOrEmpty(Model.Biography))
+    {
+        <div class="biography">
+            <h3>Biography:</h3>
+            <p>@Model.Biography</p>
+        </div>
+    }
+
+
+    @if (!string.IsNullOrEmpty(Model.Skills))
+    {
+        <div class="skills">
+            <h3>Skills:</h3>
+            <p>@Model.Skills</p>
+        </div>
+    }
+
+
+    @if (!string.IsNullOrEmpty(Model.Awards))
+    {
+        <div class="awards">
+            <h3>Awards:</h3>
+            <p>@Model.Awards</p>
+        </div>
+    }
+
+
+    @if (Model.WorkSamples != null && Model.WorkSamples.Any())
+    {
+        <div class="work-samples">
+            <h3>Work Samples:</h3>
+            <p>@Model.WorkSamples</p>
+        </div>
+    }
+
+
+    @if (!string.IsNullOrEmpty(Model.AdditionalInformation))
+    {
+        <div class="additional-info">
+            <h3>Additional Information:</h3>
+            <p>@Model.AdditionalInformation</p>
+        </div>
+    }
+
+
+    <div class="talent-status">
+        <h3>Status:</h3>
+        <p>@Model.TStatus.ToString()</p>
+    </div>
+</div>

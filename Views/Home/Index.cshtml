@@ -1,0 +1,256 @@
+﻿@model IEnumerable<Event>
+
+@{
+
+    ViewData["Title"] = "Home Page";
+}
+<head>
+    <style>
+       
+        .about-us {
+            background-color: #fff; 
+            padding: 20px; 
+            margin: 20px 0; 
+            border-radius: 10px; 
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1); 
+        }
+
+        .about-us h2 {
+            text-align: center; 
+            margin-bottom: 15px; 
+        }
+
+        .about-us-content {
+            display: flex; 
+            flex-direction: column; 
+        }
+
+        .about-us-text {
+            text-align: center; 
+        }
+
+        .about-us-images {
+            display: flex; 
+            justify-content: center; 
+            margin: 20px 0; 
+        }
+
+            .about-us-images img {
+                width: 30%; 
+                transition: transform 0.3s; 
+            }
+
+                .about-us-images img.main-image {
+                    transform: scale(1.1); 
+                    z-index: 1; 
+                    position: relative; 
+                }
+
+                .about-us-images img:not(.main-image) {
+                    opacity: 0.8; 
+                }
+              
+
+
+
+    </style>
+</head>
+<body>
+<section class="main-slider">
+    <div class="main-slider__carousel owl-carousel owl-theme thm-owl__carousel"
+         data-owl-options='{"loop": true, "items": 1, "navText": ["<span class=\"icon-left-arrow\"></span>","<span class=\"icon-right-arrow\"></span>"], "margin": 0, "dots": true, "dotsData": true, "nav": false, "animateOut": "slideOutDown", "animateIn": "fadeIn", "active": true, "smartSpeed": 1000, "autoplay": true, "autoplayTimeout": 7000, "autoplayHoverPause": false}'>
+
+        <div class="item main-slider__slide-1" data-dot="<button></button>">
+            <div class="main-slider__bg"
+                 style="background-image: url(../assets/images/backgrounds/mainimg.jpg);">
+            </div>
+
+
+            <div class="container">
+                   
+                <div class="main-slider__content">
+                      
+                    <h2 class="main-slider__title">Cast Discovery <br /> Empowering Talent, Inspiring innovation</h2>
+                    <div class="main-slider__btn-box">
+                        <a asp-action="Contact" asp-controller="Home"  class="main-slider__btn thm-btn">
+                            <span class="fas fa-long-arrow-alt-right"></span>
+                            Learn More
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+    </div>
+</section>
+<!--Main Sllider Start -->
+<!--Team Two Start-->
+
+<section class="team-two">
+    <div class="container">
+        <div class="section-title text-left">
+            <div class="section-title__title-box">
+                <h2 class="section-title__title">Upcoming Events</h2>
+            </div>
+        </div>
+
+        <div class="team-two__bottom">
+            <div class="team-two__carousel owl-carousel owl-theme thm-owl__carousel" data-owl-options='{
+                 "loop" : true,
+                 "autoplay" : true,
+                 "margin" : 70,
+                 "nav" : true,
+                 "dots" : false,
+                 "smartSpeed" : 500,
+                 "autoplayTimeout" : 10000,
+                 "navText" : ["<span class=\"fas fa-long-arrow-alt-left\"></span>","<span class=\"fas fa-long-arrow-alt-right\"></span>"],
+                "responsive": {
+                    "0": { "items": 1 },
+                    "768": { "items": 2 },
+                    "992": { "items": 3 },
+                    "1200": { "items": 3.233333 }
+                }
+            }'>
+                @if (Model.Any())
+                {
+                    foreach (var eventItem in Model)
+                    {
+                        <div class="item">
+                            <div class="team-two__single">
+                                <div class="team-two__img-box">
+                                    <div class="">
+                                        <img src="@eventItem.EventImage" alt="@eventItem.EventName" />
+                                    </div>
+                                </div>
+                                <div class="team-two__content">
+                                    <h3>
+                                        <a asp-action="Details" asp-controller="Events" asp-route-id="@eventItem.EventId">
+                                            @eventItem.EventName
+                                        </a>
+                                    </h3>
+                                    <p>@eventItem.Location - @eventItem.EventDate.ToString("MMMM dd, yyyy")</p>
+                                </div>
+                            </div>
+                        </div>
+                    }
+                }
+                else
+                {
+            <p>No upcoming events at the moment.</p>
+                }
+
+        </div>
+        </div>
+</section>
+<!--Team Two End-->
+<!--Feature One Start-->
+<section class="feature-one">
+    <div class="feature-one__wrap">
+        <div class="feature-one__title-box">
+                <h2 class="feature-one__title">Bringing Stories to Life,Unveiling Emotions Through Art</h2>
+        </div>
+        
+    </div>
+</section>
+
+<section class="services-one">
+    <div class="container">
+        <div class="row">
+            <!--Services One Single Start-->
+            <div class="col-xl-3 col-lg-6 col-md-6 wow fadeInUp" data-wow-delay="100ms">
+            </div>
+            <!--Services One Single End-->
+            <!--Services One Single Start-->
+            <div class="col-xl-3 col-lg-6 col-md-6 wow fadeInUp" data-wow-delay="200ms">
+                <div class="services-one__single">
+                    <div class="services-one__icon">
+                        <img src="../assets/images/icon/services-one-icon-2.png" alt="">
+                    </div>
+                    <h3 class="services-one__title"><a asp-action="Index" asp-controller="Talents" asp-route-id="TalentId">Our Talents</a></h3>
+                    <br>
+                    <a asp-action="Index" asp-controller="Talents" asp-route-id="TalentId" class="services-one__read-more">Read More</a>
+                </div>
+            </div>
+            <!--Services One Single End-->
+            <!--Services One Single Start-->
+            <div class="col-xl-3 col-lg-6 col-md-6 wow fadeInUp" data-wow-delay="300ms">
+                <div class="services-one__single">
+                    <div class="services-one__icon">
+                        <img src="../assets/images/icon/services-one-icon-3.png" alt="">
+                    </div>
+                    <h3 class="services-one__title"><a asp-action="Index" asp-controller="Organizations" asp-route-id="OrganizationId">Our Organizations</a></h3>
+                    <br>
+                        <a asp-action="Index" asp-controller="Organizations" asp-route-id="OrganizationId" class="services-one__read-more">Read More</a>
+                </div>
+            </div>
+            <!--Services One Single End-->
+            <!--Services One Single Start-->
+            <div class="col-xl-3 col-lg-6 col-md-6 wow fadeInUp" data-wow-delay="400ms">
+            </div>
+            <!--Services One Single End-->
+        </div>
+    </div>
+</section>
+
+<section class="sliding-text">
+    <div class="sliding-text__wrap">
+        <ul class="sliding-text__list list-unstyled">
+            <li><a href="#">Empowering Talents</a></li>
+            <li><a href="#">Inspiring innovation</a></li>
+            <li><a href="#">Empowering Talents</a></li>
+        </ul>
+        <ul class="sliding-text__list list-unstyled">
+            <li><a href="#">Empowering Talents</a></li>
+            <li><a href="#">Inspiring innovation</a></li>
+            <li><a href="#">Empowering Talnets</a></li>
+        </ul>
+    </div>
+</section>
+<!--Sliding Text Start -->
+
+<br>
+<br>
+    <!-- About Us Section -->
+    <section id="about">
+        <div class="container">
+            <div>
+                <h2 class="text-center">About Us</h2>
+                <p class="text-center">Cast Discovery is a platform that connects emerging talents in the dramatic arts with organizations seeking fresh performers. We also aim to build a supportive<br />  community where artists can share experiences and collaborate. Together, we empower new talent and enrich the dramatic arts field!</p>
+                <br /> <div class="video-one__img">
+                    <img src="~/assets/images/backgrounds/amman.jpg" alt="">
+
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <br /><br />
+
+  
+    <section class="sliding-text sliding-text-two">
+        <div class="sliding-text__wrap">
+            
+            <ul class="sliding-text__list list-unstyled cs-reverse_animation ">
+                <li><a href="#">Empowering Talents</a></li>
+                <li><a href="#">Inspiring Innovation</a></li>
+                <li><a href="#">Empowering Talents</a></li>
+            </ul>
+
+           
+            <!-- Second Sliding Text List -->
+            <ul class="sliding-text__list list-unstyled cs-reverse_animation">
+                <li><a href="#">Empowering Talents</a></li>
+                <li><a href="#">Inspiring Innovation</a></li>
+                <li><a href="#">Empowering Talents</a></li>
+            </ul>
+        </div>
+    </section>
+
+    <br />
+
+<br />
+<br />
+</body>
+
+

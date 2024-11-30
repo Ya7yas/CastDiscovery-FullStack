@@ -1,0 +1,107 @@
+﻿@model IEnumerable<Event>
+
+@{
+    ViewData["Title"] = "Index";
+}
+<style>
+    .event-image {
+        width: 100%; 
+        height: auto; 
+        max-width: 400px; 
+        object-fit: cover; 
+        border-radius: 10px; 
+    }
+
+    .history-one__bottom {
+        margin-top: 30px; 
+    }
+</style>
+
+
+<section class="page-header">
+    <div class="page-header__bg" style="background-image: url('@Url.Content("~/assets/images/backgrounds/ticket.jpeg")');">
+    </div>
+
+    <div class="container">
+        <div class="page-header__inner">
+            <h2></h2>
+            <div class="thm-breadcrumb__inner">
+                <ul class="thm-breadcrumb list-unstyled">
+                    <li><a href="index.html">Home</a></li>
+                    <li><span>/</span></li>
+                    <li>Events</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!--History One Start-->
+<section class="history-one" style="margin-top: 50px;">
+    <!-- Add space above this section -->
+    <div class="history-one__top">
+        <div class="container">
+            <div class="history-one__top-inner">
+                <div class="section-title text-left">
+                    <div class="section-title__title-box">
+                        <h2 class="section-title__title">Upcoming Events</h2>
+                    </div>
+                </div>
+                <div class="history-one__nav">
+                    <div class="swiper-button-prev" id="history-one__swiper-button-next">
+                        <i class="fas fa-long-arrow-alt-left"></i>
+                    </div>
+                    <div class="swiper-button-next" id="history-one__swiper-button-prev">
+                        <i class="fas fa-long-arrow-alt-right"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="history-one__bottom">
+        <div class="history-one__bottom-inner">
+            <div class="history-one__thumb-box">
+                <div class="swiper-container" id="history-one__thumb">
+                </div>
+            </div>
+            <div class="history-one__content-box">
+                <div class="container">
+                    <div class="swiper-container" id="history-one__carousel">
+                        <div class="swiper-wrapper">
+
+                            @foreach (var eventItem in Model)
+                            {
+                                <div class="swiper-slide">
+                                    <div class="history-one__main-content-box">
+                                        <div class="row">
+                                            <div class="col-xl-5 col-lg-5">
+                                                <div class="history-one__main-content-left">
+                                                    <h3 class="history-one__main-content-title">
+                                                        <a asp-action="Details" asp-controller="Events" asp-route-id="@eventItem.EventId"> @eventItem.EventName  </a>
+                                                    </h3>
+                                                    <p class="history-one__main-content-text">
+                                                        @eventItem.Description
+                                                    </p>
+                                                </div>
+                                            </div>
+                                            <div class="col-xl-7 col-lg-7">
+                                                <div class="history-one__main-content-right">
+                                                    <div class="history-one__main-content-img">
+                                                        <img src="@Url.Content(eventItem.EventImage)" alt="@eventItem.EventName" class="event-image" />
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                            }
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+

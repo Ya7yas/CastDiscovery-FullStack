@@ -1,0 +1,180 @@
+﻿@model IEnumerable<Talent>
+
+@{
+    ViewData["Title"] = "Index";
+}
+<h2>Talent Dashboard</h2>
+
+
+
+<h3>Pending Talents</h3>
+<div class="container">
+    <div class="page-inner">
+        <div class="page-header">
+            <h3 class="fw-bold mb-3">Talent Table</h3>
+            <ul class="breadcrumbs mb-3">
+                <li class="nav-home">
+                    <a href="#">
+                        <i class="icon-home"></i>
+                    </a>
+                </li>
+                <li class="separator">
+                    <i class="icon-arrow-right"></i>
+                </li>
+                <li class="nav-item">
+                    <a href="#">Tables</a>
+                </li>
+                <li class="separator">
+                    <i class="icon-arrow-right"></i>
+                </li>
+                <li class="nav-item">
+                    <a href="#">Datatables</a>
+                </li>
+            </ul>
+        </div>
+
+        <!-- All Talents Table -->
+        <div class="row">
+            <div class="col-md-12">
+                <div class="card">
+                    <div class="card-header ">
+                        <div class="d-flex align-items-center bg-secondary">
+                            <h4 class="card-title">All Talents</h4>
+                        </div>
+                    </div>
+                    <div class="card-body">
+                        <div class="table-responsive">
+                            <table id="add-row" class="display table table-striped table-hover">
+                                <thead>
+                                    <tr>
+                                        <th>Name</th>
+                                        <th>Email</th>
+                                        <th>Phone</th>
+                                        <th style="width: 10%">Status</th>
+                                        <th>Action</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    @if (ViewBag.PendingTalents != null)
+                                    {
+                                        foreach (var talent in ViewBag.PendingTalents)
+                                        {
+                                            <tr>
+                                                <td>@talent.FullName</td>
+                                                <td>@talent.Email</td>
+                                                <td>@talent.PhoneNumber</td>
+                                                <td>Pending</td>
+                                              
+                                                <td>
+                                                    <a asp-action="Accept" asp-controller="Talents" asp-route-id="@talent.TalentId" class="btn btn-success" onclick="return confirm('Are you sure you want to accept this talent?');">Accept</a>
+                                                    <a asp-action="Reject" asp-controller="Talents" asp-route-id="@talent.TalentId" class="btn btn-danger" onclick="return confirm('Are you sure you want to reject this talent?');">Reject</a>
+
+                                                    <a asp-action="Details" asp-controller="Talents" asp-route-id="@talent.TalentId" class="btn btn-primary">Details</a>
+                                                </td>
+                                            </tr>
+                                        }
+                                    }
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Accepted Talents Table -->
+        <div class="row">
+            <div class="col-md-12">
+                <div class="card">
+                    <div class="card-header bg-success">
+                        <h4 class="card-title">Accepted Talents</h4>
+                    </div>
+                    <div class="card-body">
+                        <div class="table-responsive">
+                            <table id="multi-filter-select" class="display table table-striped table-hover">
+                                <thead>
+                                    <tr>
+                                        <th>Name</th>
+                                        <th>Email</th>
+                                        <th>Phone</th>
+                                        <th>Status</th>
+                                        <th>Action</th>
+                                        
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    @if (ViewBag.AcceptedTalents != null)
+                                    {
+                                        foreach (var talent in ViewBag.AcceptedTalents)
+                                        {
+                                            <tr>
+                                                <td>@talent.FullName</td>
+                                                <td>@talent.Email</td>
+                                                <td>@talent.PhoneNumber</td>
+                                                <td>Accepted</td>
+                                               <td>
+                                                    <a asp-action="Details" asp-controller="Talents" asp-route-id="@talent.TalentId" class="btn btn-primary">Details</a>
+                                                    <a asp-action="Pend" asp-controller="Talents" asp-route-id="@talent.TalentId" class="btn btn-secondary" onclick="return confirm('Are you sure you want to Re-Assess this talent?');">Pend</a>
+
+                                                </td>
+                                                
+                                               
+                                            </tr>
+                                        }
+                                    }
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Rejected Talents Table -->
+        <div class="row">
+            <div class="col-md-12">
+                <div class="card">
+                    <div class="card-header bg-danger">
+                        <h4 class="card-title">Rejected Talents</h4>
+                    </div>
+                    <div class="card-body">
+                        <div class="table-responsive">
+                            <table id="basic-datatables" class="display table table-striped table-hover">
+                                <thead>
+                                    <tr>
+                                        <th>Name</th>
+                                        <th>Email</th>
+                                        <th>Phone</th>
+                                        <th>Status</th>
+                                        <th>Action</th>
+                                        
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    @if (ViewBag.RejectedTalents != null)
+                                    {
+                                        foreach (var talent in ViewBag.RejectedTalents)
+                                        {
+                                            <tr>
+                                                <td>@talent.FullName</td>
+                                                <td>@talent.Email</td>
+                                                <td>@talent.PhoneNumber</td>
+                                                <td>Rejected</td>
+                                                <td>
+                                                    <a asp-action="Details" asp-controller="Talents" asp-route-id="@talent.TalentId" class="btn btn-primary">Details</a>
+                                                    <a asp-action="Pend" asp-controller="Talents" asp-route-id="@talent.TalentId" class="btn btn-secondary" onclick="return confirm('Are you sure you want to Re-Assess this talent?');">Pend</a>
+
+                                                </td>
+
+                                            </tr>
+                                        }
+                                    }
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

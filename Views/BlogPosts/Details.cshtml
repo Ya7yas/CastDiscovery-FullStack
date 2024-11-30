@@ -1,0 +1,141 @@
+﻿@model ScenePro.Models.BlogPost
+
+@{
+    ViewData["Title"] = "Blog Post Details";
+}
+<link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet" />
+
+<style>
+    body {
+        background-color: #f4f4f4; 
+        color: #333;
+        font-family: 'Open Sans', sans-serif;
+    }
+
+    h1, h5, .card-title {
+        font-family: 'Montserrat', sans-serif; 
+        color: #000; 
+    }
+
+    .btn-outline-primary {
+        border-color: #8B0000; 
+        color: #8B0000;
+        transition: background-color 0.3s, color 0.3s;
+    }
+
+        .btn-outline-primary:hover {
+            background-color: #8B0000; 
+            color: #fff; 
+        }
+
+    .card {
+        background-color: #2b2b2b; 
+        border: none;
+        transition: transform 0.3s;
+        border-radius: 15px;
+        margin-bottom: 70px;
+    }
+
+        .card:hover {
+            transform: scale(1.05);
+        }
+
+    .card-img-top {
+        height: 350px;
+        object-fit: cover;
+        transition: filter 0.3s;
+        border-top-left-radius: 15px;
+        border-top-right-radius: 15px;
+    }
+
+        .card-img-top:hover {
+            filter: brightness(80%);
+        }
+
+    .card-body {
+        padding: 30px;
+        color: #f1f1f1; 
+    }
+
+    .card-footer {
+        background-color: #2c2c2e; 
+        color: #b0b0b0; 
+        border-bottom-left-radius: 15px;
+        border-bottom-right-radius: 15px;
+    }
+
+   
+    .page-header {
+        position: relative;
+        padding: 120px 0 60px;
+        background-color: rgba(0, 0, 0, 0.5); 
+        text-align: center;
+        color: #fff; 
+    }
+
+    .page-header__inner {
+        position: relative;
+        z-index: 2;
+    }
+
+    .page-header h2 {
+        font-size: 48px;
+        color: #fff; 
+        font-weight: bold;
+        margin-bottom: 20px;
+    }
+
+    .page-header p {
+        font-size: 20px;
+        color: #fff; 
+    }
+
+    .thm-breadcrumb {
+        font-size: 16px;
+        color: #fff; 
+    }
+
+        .thm-breadcrumb a {
+            color: #fff; 
+        }
+
+        .thm-breadcrumb li {
+            display: inline;
+            margin: 0 5px;
+        }
+</style>
+
+<section class="page-header">
+    <div class="page-header__bg" style="background-image: url(../assets/images/backgrounds/film.jpg);"></div>
+    <div class="container">
+        <div class="page-header__inner">
+            <p>Cast Discovery</p>
+            <h2>Latest Blog Posts</h2>
+            <div class="thm-breadcrumb__inner">
+                <ul class="thm-breadcrumb list-unstyled">
+                    <li><a asp-action="Index" asp-controller="Home">Home</a></li>
+                    <li><span>/</span></li>
+                    <li>Blog</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</section>
+
+<div class="container mt-5">
+    <div class="row justify-content-center">
+        <div class="col-md-8">
+            <div class="card shadow-lg">
+                <img src="~/images/@Model.PostImage" class="card-img-top" alt="@Model.Title">
+                <div class="card-body text-white">
+                    <h1 class="card-title display-4">@Model.Title</h1>
+                    <p class="card-text lead">@Model.Content</p>
+                    <p class="text-muted">By @Model.CreatorName</p>
+                </div>
+                <div class="card-footer text-muted">
+                    Posted on @Model.CreationDate.ToShortDateString()
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

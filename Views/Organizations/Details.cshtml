@@ -1,0 +1,212 @@
+﻿@model Organization
+
+@{
+    ViewData["Title"] = "Details";
+}
+<style>
+    body {
+        font-family: 'Arial', sans-serif;
+        background-color: #f4f4f4;
+        color: #333;
+        margin: 0;
+        padding: 0;
+    }
+
+    .page-header {
+        padding: 50px 0;
+        text-align: center;
+        background-color: #333;
+        color: #fff;
+    }
+
+    .page-header__title {
+        font-size: 40px;
+        font-weight: bold;
+        color: #fff;
+    }
+
+    .team-details {
+        background-color: #fff;
+        border-radius: 10px;
+        padding: 40px;
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+        max-width: 90%;
+        margin: 50px auto;
+        display: flex;
+        gap: 50px;
+    }
+
+    .team-details__img {
+        flex: 1;
+        max-width: 45%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin-right: 20px; 
+    }
+
+        .team-details__img img {
+            width: 100%;
+            height: auto;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+        }
+
+    .team-details__content {
+        flex: 2;
+        display: flex;
+        flex-direction: column;
+        gap: 30px;
+        font-size: 1.2rem;
+    }
+
+    .team-details__title {
+        font-size: 32px;
+        color: #a70000; 
+        margin-bottom: 20px;
+        text-align: left;
+        border-bottom: 4px solid #ccc;
+        padding-bottom: 8px;
+    }
+
+    .team-details__text {
+        color: #555;
+        line-height: 1.8;
+        font-size: 1.1rem;
+        margin-top: 15px;
+        text-align: justify;
+    }
+
+    .team-details__contact h4 {
+        font-size: 26px;
+        color: #a70000;
+        margin-bottom: 10px;
+        border-bottom: 3px solid #eee;
+        padding-bottom: 8px;
+    }
+
+    .icon-link {
+        display: flex;
+        align-items: center;
+        color: #a70000;
+        text-decoration: none;
+        overflow: hidden;
+        white-space: nowrap;
+        text-overflow: ellipsis;
+    }
+
+        .icon-link i {
+            margin-right: 8px;
+        }
+
+    .text-center {
+        text-align: center;
+    }
+
+    .btn-outline-danger {
+        color: #a70000;
+        border-color: #a70000;
+        margin: 0 10px;
+    }
+
+        .btn-outline-danger:hover {
+            background-color: #a70000;
+            color: white;
+        }
+
+    .btn-link {
+        color: #a70000;
+        text-decoration: none;
+    }
+
+        .btn-link:hover {
+            text-decoration: underline;
+        }
+
+    .team-details__projects, .team-details__creative {
+        margin-top: 20px;
+        padding: 20px;
+        border-radius: 8px;
+        background-color: #f9f9f9;
+        font-size: 1.1rem;
+    }
+
+    
+    .section-divider {
+        height: 2px;
+        background-color: #ddd;
+        margin: 20px 0;
+    }
+</style>
+
+<section class="page-header">
+    <h2 class="page-header__title">@Model.OrganizationName</h2>
+</section>
+
+@if (Model.Status == OrganizationStatus.Pending || Model.Status == OrganizationStatus.Rejected)
+{
+    <div class="container mt-5 text-center">
+        <h3 class="text-danger">You do not have access to view this portfolio.</h3>
+        <p>This organization is either pending approval or has been rejected.</p>
+    </div>
+}
+else
+{
+    <section class="team-details mb-5">
+        <div class="team-details__img">
+            <img src="@(Model.OrganizationImage ?? Url.Content("~/assets/images/backgrounds/Organization1.jpg"))"
+                 alt="@Model.OrganizationName - Image">
+        </div>
+
+        <div class="team-details__content">
+            <h3 class="team-details__title">@Model.OrganizationName</h3>
+            <p class="team-details__text">@Model.Overview</p>
+
+            <div class="section-divider"></div> 
+
+            <div class="team-details__contact">
+                <h4>Contact Information</h4>
+                <p><strong>Address:</strong> @Model.Address</p><br />
+                <p><strong>Contact:</strong> @Model.ContactInfo</p><br />
+                @if (!string.IsNullOrEmpty(Model.WebsiteUrl))
+                {
+                    <p>
+                        <strong>
+                            <a href="@Model.WebsiteUrl" target="_blank" class="icon-link">
+                            <i class="fas fa-globe"></i>Website
+                            </a>
+                        </strong>
+
+
+
+                    </p>
+
+                    <br>
+                }
+                @if (!string.IsNullOrEmpty(Model.SocialMediaLink))
+                {
+                    <p>
+                        <strong>
+                            <a href="@Model.SocialMediaLink" target="_blank" class="icon-link">
+                                <i class="fas fa-share-alt"></i>Social Media
+                            </a>
+                        </strong>
+
+                    </p>
+
+                    <br>
+                }
+            </div>
+
+            <div class="section-divider"></div> 
+
+            <div class="team-details__projects">
+                <h4>Projects</h4>
+                <p>@Model.Projects</p>
+            </div>
+        </div>
+    </section>
+}
+<div class="text-center mb-4">
+    <a asp-action="Index" asp-route-id="@Model?.OrganizationId" class="btn btn-outline-danger btn-lg">Back To List</a> 
+</div>

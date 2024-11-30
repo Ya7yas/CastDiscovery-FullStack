@@ -1,0 +1,110 @@
+﻿@model LoginViewModel
+
+@{
+    ViewData["Title"] = "Login";
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login & Sign Up</title>
+    <link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="~/assets/css/account.css">
+    <style>
+        body {
+            background-image: url(../assets/images/backgrounds/mainimg.jpg);
+        }
+        .overlay-panel a {
+            display: inline-block;
+            padding: 10px 20px;
+            background-color: black;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            text-decoration: none;
+            transition: background-color 0.3s;
+        }
+        .overlay-panel a:hover {
+            background-color: gray;
+        }
+        .back-home-button {
+            display: inline-block;
+            padding: 10px 20px;
+            background-color: white;
+            color: black;
+            border: none;
+            border-radius: 5px;
+            text-decoration: none;
+            transition: background-color 0.3s;
+        }
+        .back-home-button a:hover {
+            background-color: red;
+        }
+        .error-message {
+            color: red;
+            display: none;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="back-home-button">
+        <a asp-action="Index" asp-controller="Home">Back to Home</a>
+    </div><br />
+
+    <div class="container" id="container">
+        <div class="form-container sign-in-container">
+            <form id="loginForm" asp-action="Login" asp-controller="Account" method="post" onsubmit="return validateForm();">
+                <h1>Sign In</h1>
+                <input asp-for="Email" placeholder="Email" id="email" required />
+                <span id="email-error" class="error-message">Invalid email format</span>
+                <input asp-for="Password" type="password" placeholder="Password" id="password" required />
+                <span id="password-error" class="error-message">Password must be at least 6 characters</span>
+                <button type="submit">Log In</button>
+            </form>
+        </div>
+        <div class="overlay-container">
+            <div class="overlay">
+                <div class="overlay-panel overlay-right">
+                    <h1>Hello</h1>
+                    <p>Enter your personal details and start your journey with us</p>
+                    <a asp-action="Register" asp-controller="Account">Sign Up</a> 
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function validateForm() {
+            var email = document.getElementById("email").value;
+            var password = document.getElementById("password").value;
+            var emailError = document.getElementById("email-error");
+            var passwordError = document.getElementById("password-error");
+
+            var emailPattern = /^[^@@\s]+@@[^@@\s]+\.[^@@\s]+$/;
+            var isValid = true;
+
+
+            if (!emailPattern.test(email)) {
+                emailError.style.display = 'block';
+                isValid = false;
+            } else {
+                emailError.style.display = 'none';
+            }
+
+            if (password.length < 6) {
+                passwordError.style.display = 'block';
+                isValid = false;
+            } else {
+                passwordError.style.display = 'none';
+            }
+
+            return isValid;
+        }
+    </script>
+
+</body>
+</html>

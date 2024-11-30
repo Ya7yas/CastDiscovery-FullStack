@@ -1,0 +1,204 @@
+﻿@model BlogPost
+
+@{
+    ViewData["Title"] = "Edit Blog Post";
+}
+<link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet" />
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet"> 
+<style>
+    body {
+        background-color: #f9f9f9;
+        font-family: 'Poppins', sans-serif;
+        color: #333;
+    }
+
+    .page-header {
+        background-size: cover;
+        background-position: center;
+        padding: 20px 0;
+        text-align: center;
+        color: #fff;
+        position: relative;
+    }
+
+    .page-header__bg {
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+      
+        z-index: 1;
+    }
+
+    .page-header__inner {
+        position: relative;
+        z-index: 2;
+    }
+
+    .page-header p {
+        font-size: 22px;
+        font-weight: 300;
+        margin-bottom: 5px;
+        color: #ffffff; 
+    }
+
+    .page-header h2 {
+        font-size: 52px;
+        font-weight: bold;
+        margin-bottom: 0;
+        color: #ffffff;
+    }
+
+    .container {
+        margin-top: 50px;
+        margin-bottom: 50px;
+    }
+
+    .form-container {
+        background-color: #ffffff;
+        padding: 40px;
+        border-radius: 12px;
+        box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1);
+        margin-top: 30px; 
+        margin-bottom: 30px; 
+    }
+
+        .form-container h2 {
+            color: #000000;
+            margin-bottom: 30px;
+            text-align: center;
+            font-size: 34px;
+            font-weight: 600;
+        }
+
+    .form-group label {
+        font-weight: 600;
+        color: #333;
+    }
+
+    .form-control {
+        padding: 12px;
+        font-size: 16px;
+        border-radius: 8px;
+        border: 1px solid #ddd;
+        transition: all 0.3s ease;
+        font-family: 'Poppins', sans-serif;
+    }
+
+        .form-control:focus {
+            border-color: #000000;
+            box-shadow: none;
+        }
+
+    .custom-file-input:focus {
+        border-color: #000000;
+    }
+
+    .btn {
+        background-color: #000000;
+        color: white;
+        padding: 15px;
+        font-size: 16px;
+        border-radius: 8px;
+        border: none;
+        width: 100%;
+        transition: background-color 0.3s ease;
+        font-family: 'Poppins', sans-serif;
+    }
+
+        .btn:hover {
+            background-color: red;
+        }
+
+    .btn-back {
+        color: #000000;
+        text-decoration: none;
+        font-weight: bold;
+        font-family: 'Poppins', sans-serif;
+        transition: color 0.3s ease;
+    }
+
+        .btn-back:hover {
+            color: red;
+        }
+
+    .text-center {
+        margin-top: 20px;
+    }
+
+    .form-container textarea {
+        font-family: 'Poppins', sans-serif;
+        border-radius: 8px;
+    }
+
+    .form-container .form-group {
+        margin-bottom: 25px;
+    }
+</style>
+
+<section class="page-header">
+    <div class="page-header__bg" style="background-image: url(../assets/images/backgrounds/film.jpg);">
+    </div>
+    <div class="container">
+        <div class="page-header__inner">
+            <p>Cast Discovery </p>
+            <h2>Edit Blog Post</h2>
+            <div class="thm-breadcrumb__inner">
+                <ul class="thm-breadcrumb list-unstyled">
+                    <li><a asp-action="Index" asp-controller="Home">Home</a></li>
+                    <li><span>/</span></li>
+                    <li>Edit</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</section>
+
+<div class="container">
+    <div class="form-container">
+        <h2>Edit Blog Post</h2>
+
+        <form asp-action="Edit" enctype="multipart/form-data" method="post">
+            <div asp-validation-summary="All" class="text-danger"></div>
+
+            <input type="hidden" asp-for="BlogPostId" />
+
+            <div class="form-group">
+                <label asp-for="Title"></label>
+                <input asp-for="Title" class="form-control" placeholder="Enter post title" />
+                <span asp-validation-for="Title" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="CreatorName"></label>
+                <input asp-for="CreatorName" class="form-control" placeholder="Your name" />
+                <span asp-validation-for="CreatorName" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="Content"></label>
+                <textarea asp-for="Content" class="form-control" rows="6" placeholder="Write your post content here..."></textarea>
+                <span asp-validation-for="Content" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="ImageFile"></label>
+                <input asp-for="ImageFile" class="form-control custom-file-input" type="file" accept="image/*" />
+                <span asp-validation-for="ImageFile" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="CreationDate"></label>
+                <input asp-for="CreationDate" class="form-control" type="date" />
+                <span asp-validation-for="CreationDate" class="text-danger"></span>
+            </div>
+
+            <button type="submit" class="btn btn-block">Save Changes</button>
+        </form>
+    </div>
+
+    <div class="text-center">
+        <a asp-action="Index" class="btn-back">Back to List</a>
+    </div>
+</div>

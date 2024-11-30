@@ -1,0 +1,100 @@
+﻿@model ScenePro.Models.Event
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+
+<style>
+    body {
+        background-color: #ffffff; 
+        color: #333;
+        font-family: 'Arial', sans-serif;
+    }
+
+    h1 {
+        color: #900000; 
+        margin-bottom: 30px; 
+    }
+
+    .container {
+        
+        max-width: 800px; 
+        padding: 20px; 
+        background-color: #f9f9f9; 
+        border-radius: 10px; 
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1); 
+        margin-top:200px;
+      
+    }
+
+    dt {
+        font-weight: bold;
+        color: #900000; 
+    }
+
+    dd {
+        margin-bottom: 20px; 
+        color: #555; 
+    }
+
+    a {
+        color: #900000; 
+        text-decoration: none;
+        font-weight: bold; 
+    }
+
+    a:hover {
+        text-decoration: underline; 
+    }
+
+    .footer-links {
+        margin-top: 30px; 
+        text-align: center; 
+    }
+</style>
+
+<div class="container">
+    <h1>Details</h1>
+    <div>
+        <h4>Event</h4>
+        <hr />
+        <dl class="row">
+            
+          
+
+            <dt class="col-sm-2">@Html.DisplayNameFor(model => model.EventName)</dt>
+            <dd class="col-sm-10">@Html.DisplayFor(model => model.EventName)</dd>
+
+            <dt class="col-sm-2">@Html.DisplayNameFor(model => model.EventDate)</dt>
+            <dd class="col-sm-10">@Html.DisplayFor(model => model.EventDate)</dd>
+
+            <dt class="col-sm-2">@Html.DisplayNameFor(model => model.Location)</dt>
+            <dd class="col-sm-10">@Html.DisplayFor(model => model.Location)</dd>
+
+            <dt class="col-sm-2">@Html.DisplayNameFor(model => model.Description)</dt>
+            <dd class="col-sm-10">@Html.DisplayFor(model => model.Description)</dd>
+
+           
+
+            <dt class="col-sm-2">@Html.DisplayNameFor(model => model.Organizer)</dt>
+            <dd class="col-sm-10">@Html.DisplayFor(model => model.Organizer)</dd>
+
+            <dt class="col-sm-2">@Html.DisplayNameFor(model => model.ContactEmail)</dt>
+            <dd class="col-sm-10">@Html.DisplayFor(model => model.ContactEmail)</dd>
+
+            <dt class="col-sm-2">@Html.DisplayNameFor(model => model.IsActive)</dt>
+            <dd class="col-sm-10">@Html.DisplayFor(model => model.IsActive)</dd>
+
+            <dt class="col-sm-2">@Html.DisplayNameFor(model => model.IsDeleted)</dt>
+            <dd class="col-sm-10">@Html.DisplayFor(model => model.IsDeleted)</dd>
+
+            <dt class="col-sm-2">@Html.DisplayNameFor(model => model.CreationDate)</dt>
+            <dd class="col-sm-10">@Html.DisplayFor(model => model.CreationDate)</dd>
+        </dl>
+    </div>
+    <div class="footer-links">
+        <a asp-action="Edit" asp-route-id="@Model?.EventId">Edit</a> |
+        <a asp-action="Index">Back to List</a>
+    </div>
+</div>

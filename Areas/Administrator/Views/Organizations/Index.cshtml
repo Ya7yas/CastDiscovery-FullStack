@@ -1,0 +1,151 @@
+﻿@model IEnumerable<Organization>
+@{
+    var pendingOrganizations = ViewBag.PendingOrganizations as List<Organization>;
+    var acceptedOrganizations = ViewBag.AcceptedOrganizations as List<Organization>;
+    var rejectedOrganizations = ViewBag.RejectedOrganizations as List<Organization>;
+}
+
+<div class="container">
+    <div class="page-inner">
+        <div class="page-header">
+            <h3 class="fw-bold mb-3">Organization Table</h3>
+            <ul class="breadcrumbs mb-3">
+                <li class="nav-home">
+                    <a href="#">
+                        <i class="icon-home"></i>
+                    </a>
+                </li>
+                <li class="separator">
+                    <i class="icon-arrow-right"></i>
+                </li>
+                <li class="nav-item">
+                    <a href="#">Organization Tables</a>
+                </li>
+                <li class="separator">
+                    <i class="icon-arrow-right"></i>
+                </li>
+                <li class="nav-item">
+                    <a href="#">Datatables</a>
+                </li>
+            </ul>
+        </div>
+
+        <!-- Pending Organizations Table -->
+        <div class="row">
+            <div class="col-md-12">
+                <div class="card">
+                    <div class="card-header bg-secondary">
+                        <h4 class="card-title">Pending Organizations</h4>
+                    </div>
+                    <div class="table-responsive">
+                        <table id="pending-organizations" class="display table table-striped table-hover">
+                            <thead>
+                                <tr>
+                                    <th>Name</th>
+
+                                    <th>ContactInfo</th>
+                                    <th>Status</th>
+                                    <th>Actions</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach (var org in pendingOrganizations)
+                                {
+                                    <tr>
+                                        <td>@org.OrganizationName</td>
+                                   
+                                        <td>@org.ContactInfo</td>
+                                        <td>Pending</td>
+                                        <td>
+                                            <a asp-action="Details" asp-controller="Organizations" asp-route-id="@org.OrganizationId" class="btn btn-primary">Details</a>
+                                            <a asp-action="Accept" asp-controller="Organizations" asp-route-id="@org.OrganizationId" class="btn btn-success" onclick="return confirm('Are you sure you want to accept this organization?');">Accept</a>
+                                            <a asp-action="Reject" asp-controller="Organizations" asp-route-id="@org.OrganizationId" class="btn btn-danger" onclick="return confirm('Are you sure you want to reject this organization?');">Reject</a>
+                                        </td>
+                                    </tr>
+                                }
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Accepted Organizations Table -->
+        <div class="col-md-12">
+            <div class="card">
+                <div class="card-header bg-success">
+                    <h4 class="card-title">Accepted Organizations</h4>
+                </div>
+                <div class="table-responsive">
+                    <table id="accepted-organizations" class="display table table-striped table-hover">
+                        <thead>
+                            <tr>
+                                <th>Name</th>
+                               
+                                <th>ContactInfo</th>
+                                <th>Registeration Date</th>
+                                <th>Status</th>
+                                <th>Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var org in acceptedOrganizations)
+                            {
+                                <tr>
+                                    <td>@org.OrganizationName</td>
+                                    
+                                    <td>@org.ContactInfo</td>
+                                    <td>@DateTime.Now.Year</td>
+                                    <td>Accepted</td>
+                                    <td>
+                                        <a asp-action="Details" asp-controller="Organizations" asp-route-id="@org.OrganizationId" class="btn btn-primary">Details</a>
+                                        <a asp-action="Pend" asp-controller="Organizations" asp-route-id="@org.OrganizationId" class="btn btn-secondary" onclick="return confirm('Are you sure you want to Re-Assess this organization?');">Pend</a>
+                                    </td>
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+
+        <!-- Rejected Organizations Table -->
+        <div class="col-md-12">
+            <div class="card">
+                <div class="card-header bg-danger">
+                    <h4 class="card-title">Rejected Organizations</h4>
+                </div>
+                <div class="table-responsive">
+                    <table id="rejected-organizations" class="display table table-striped table-hover">
+                        <thead>
+                            <tr>
+                                <th>Name</th>
+                                
+                                <th>ContactInfo</th>
+                                <th>Registeration Date</th>
+                                <th>Status</th>
+                                <th>Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var org in rejectedOrganizations)
+                            {
+                                <tr>
+                                    <td>@org.OrganizationName</td>
+                                    
+                                    <td>@org.ContactInfo</td>
+                                    <td>@DateTime.Now.Year</td>
+                                    <td>Rejected</td>
+                                    <td>
+                                        <a asp-action="Details" asp-controller="Organizations" asp-route-id="@org.OrganizationId" class="btn btn-primary">Details</a>
+                                        <a asp-action="Pend" asp-controller="Organizations" asp-route-id="@org.OrganizationId" class="btn btn-secondary" onclick="return confirm('Are you sure you want to Re-Assess this organization?');">Pend</a>
+                                    </td>
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

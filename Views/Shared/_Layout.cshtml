@@ -1,0 +1,279 @@
+﻿
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+
+ 
+    <title>Talent Showcase Platform - Empowering Creativity & Innovation</title>
+    <meta name="description" content="Discover and showcase emerging talent in the arts and film industry. Connect with organizations looking for fresh, innovative ideas. Empowering talent and inspiring creativity." />
+    <meta name="keywords" content="Cast Discovery, Talents Showcase, artists, film industry, actors, directors, writers, creatives, emerging talent, organizations, arts, creativity, innovation" />
+    <meta name="author" content="Cast Discovery" />
+
+    
+    <meta property="og:title" content="Talent Showcase Platform - Empowering Creativity & Innovation" />
+    <meta property="og:description" content="Join our platform to discover, connect, and showcase emerging talents in the arts and film industry. Empowering the next generation of artists." />
+   
+
+   
+  
+   
+    <!--<link rel="canonical" href="https://yourwebsite.com" />-->
+    <!-- Robots -->
+    <meta name="robots" content="index, follow" />
+
+
+   
+
+
+    <!-- Favicons -->
+    <link rel="apple-touch-icon" sizes="180x180" href="@Url.Content("~/assets/images/favicons/Title.png")" />
+    <link rel="icon" type="image/png" sizes="32x32" href="@Url.Content("~/assets/images/favicons/Title.png")" />
+    <link rel="icon" type="image/png" sizes="16x16" href="@Url.Content("~/assets/images/favicons/Title.png")" />
+    <link rel="manifest" href="@Url.Content("~/assets/images/favicons/site.webmanifest")" />
+
+    <meta name="description" content="Talent ShowCase Platform" />
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;0,800;0,900;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+    <link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet">
+    <!-- إضافة Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" />
+
+
+
+
+    <!-- Stylesheets -->
+    <link rel="stylesheet" href="@Url.Content("~/assets/vendors/bootstrap/css/bootstrap.min.css")" />
+    <link rel="stylesheet" href="@Url.Content("~/assets/vendors/animate/animate.min.css")" />
+    <link rel="stylesheet" href="@Url.Content("~/assets/vendors/animate/custom-animate.css")" />
+    <link rel="stylesheet" href="@Url.Content("~/assets/vendors/fontawesome/css/all.min.css")" />
+    <link rel="stylesheet" href="@Url.Content("~/assets/vendors/jarallax/jarallax.css")" />
+    <link rel="stylesheet" href="@Url.Content("~/assets/vendors/jquery-magnific-popup/jquery.magnific-popup.css")" />
+    <link rel="stylesheet" href="@Url.Content("~/assets/vendors/odometer/odometer.min.css")" />
+    <link rel="stylesheet" href="@Url.Content("~/assets/vendors/swiper/swiper.min.css")" />
+    <link rel="stylesheet" href="@Url.Content("~/assets/vendors/eston-icons/style.css")" />
+    <link rel="stylesheet" href="@Url.Content("~/assets/vendors/owl-carousel/owl.carousel.min.css")" />
+    <link rel="stylesheet" href="@Url.Content("~/assets/vendors/owl-carousel/owl.theme.default.min.css")" />
+    <link rel="stylesheet" href="@Url.Content("~/assets/vendors/bootstrap-select/css/bootstrap-select.min.css")" />
+    <link rel="stylesheet" href="@Url.Content("~/assets/vendors/jquery-ui/jquery-ui.css")" />
+
+    <!-- Template Styles -->
+    <link rel="stylesheet" href="@Url.Content("~/assets/css/eston.css")" />
+    <link rel="stylesheet" href="@Url.Content("~/assets/css/eston-responsive.css")" />
+   
+    @* Render a section for additional styles if it exists *@
+    @RenderSection("Styles", required: false)
+    <style>
+
+        body {
+            width: 100vw;
+            margin: 0;
+            padding: 0;
+        }
+
+        .main-header {
+            position: fixed; 
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 1000; 
+            background: rgba(0, 0, 0, 0.5); 
+            transition: background 0.3s ease; 
+        }
+
+        .main-menu__wrapper {
+            display: flex;
+            align-items: center; 
+            justify-content: space-between; 
+            padding: 5px 20px; 
+        }
+
+        .main-menu__logo img {
+           bottom:0px;
+            height: 200px; 
+        }
+
+        .main-menu__main-menu-box {
+            flex-grow: 1; 
+        }
+
+        .main-menu__list {
+            display: flex;
+            justify-content: center; 
+            list-style: none;
+            margin: 0;
+            padding: 0;
+        }
+
+            .main-menu__list li {
+                margin: 0 10px; 
+            }
+
+            .main-menu__list a {
+                color: white; 
+                text-decoration: none; 
+                padding: 8px 12px; 
+                font-size: 14px; 
+            }
+
+                .main-menu__list a:hover {
+                    color: rgba(255, 255, 255, 0.8); 
+                }
+
+        .main-menu-three__btn {
+            color: black;
+        }
+
+        
+        .scrolled .main-header {
+            background: rgba(0, 0, 0, 0.8); 
+        }
+
+       
+    </style>
+    
+    
+    </head>
+<body>
+
+    <div class="preloader">
+        <div class="preloader__image"></div>
+    </div>
+
+
+
+    <div class="page-wrapper">
+        <header class="main-header">
+            <nav class="main-menu">
+                <div class="main-menu__wrapper">
+                   
+                        <a asp-area="" asp-controller="Home" asp-action="Index">
+                            <img src="~/assets/images/resources/logoo.png" alt="" width="" height="150px">
+                        </a>
+                    
+                    <div class="main-menu__main-menu-box">
+                        <a href="#" class="mobile-nav__toggler"><i class="fa fa-bars"></i></a>
+                        <ul class="main-menu__list">
+                            <li >
+                                <a asp-area="" asp-controller="Home" asp-action="Index">Home</a>
+                            </li>
+                            <li>
+                                <a href="#about">About</a>
+                            </li>
+                            <li class="dropdown">
+                                <a href="#">Sections</a>
+                                <ul>
+                                    <li><a asp-area="" asp-controller="Talents" asp-action="Index">Talents</a></li>
+                                    <li><a asp-area="" asp-controller="Organizations" asp-action="Index">Organizations</a></li>
+                                    <li><a asp-area="" asp-controller="Events" asp-action="Index">Events</a></li>
+                                </ul>
+                            </li>
+                            <li>
+                                <a asp-area="" asp-controller="BlogPosts" asp-action="Index">Blog</a>
+                            </li>
+                            <li>
+                                <a asp-area="" asp-controller="Home" asp-action="Contact">Contact</a>
+                            </li>
+                        </ul>
+                    </div>
+                    @if (User.Identity.IsAuthenticated)
+                    {
+                        if (User.IsInRole("Organization"))
+                        {
+                            <span class="badge badge-success">Organization</span> 
+                        }
+                        if (User.IsInRole("Talent"))
+                        {
+                            <span class="badge badge-primary">Talent</span> 
+                        }
+                    }
+                    <div class="main-menu__right">
+                        <div class="main-menu-three__right">
+                            <div class="main-menu-three__btn-box">
+                                @if (User.Identity.IsAuthenticated)
+                                {
+                                    <div class="user-profile">
+                                      
+                                        <form asp-controller="Account" asp-action="Logout" method="post" class="d-inline">
+                                            <button type="submit" class="main-menu-three__btn thm-btn">
+                                                <span class="fas fa-sign-out-alt"></span> Log Out
+                                            </button>
+                                        </form>
+                                    </div>
+                                }
+                                else
+                                {
+                                    <a href="@Url.Action("Login", "Account")" class="main-menu-three__btn thm-btn">
+                                        <span class="fas fa-long-arrow-alt-right"></span> Log In
+                                    </a>
+                                }
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </nav>
+        </header>
+
+        <div class="stricky-header stricked-menu main-menu">
+            <div class="sticky-header__content"></div>
+        </div>
+    </div>
+
+
+
+    
+
+ 
+ 
+    <main>
+        @RenderBody()
+    </main>
+
+
+    <footer class="bg-dark text-center text-white">
+        <div class="container p-4 pb-0">
+            <section class="mb-4">
+                <a class="btn btn-outline-light btn-floating m-1" href="https://www.facebook.com" target="_blank" role="button"><i class="fab fa-facebook-f"></i></a>
+                <a class="btn btn-outline-light btn-floating m-1" href="https://www.google.com" target="_blank" role="button"><i class="fab fa-google"></i></a>
+                <a class="btn btn-outline-light btn-floating m-1" href="https://www.instagram.com" target="_blank" role="button"><i class="fab fa-instagram"></i></a>
+            </section>
+        </div>
+        <div class="text-center p-3" style="background-color: rgba(0, 0, 0, 0.2);">
+            © 2024 Copyright:
+            <a class="text-white" href="#">Cast Hunt</a>
+        </div>
+    </footer>
+
+    <a href="#" data-target="html" class="scroll-to-target scroll-to-top"><i class="fas fa-arrow-up"></i></a>
+
+
+    <!-- Scripts -->
+    <script src="@Url.Content("~/assets/vendors/jquery/jquery-3.6.0.min.js")"></script>
+    <script src="@Url.Content("~/assets/vendors/hover-animated/imagesloaded.pkgd.min.js")"></script>
+    <script src="@Url.Content("~/assets/vendors/bootstrap/js/bootstrap.bundle.min.js")"></script>
+    <script src="@Url.Content("~/assets/vendors/jarallax/jarallax.min.js")"></script>
+    <script src="@Url.Content("~/assets/vendors/jquery-magnific-popup/jquery.magnific-popup.min.js")"></script>
+    <script src="@Url.Content("~/assets/vendors/jquery-validate/jquery.validate.min.js")"></script>
+    <script src="@Url.Content("~/assets/vendors/odometer/odometer.min.js")"></script>
+    <script src="@Url.Content("~/assets/vendors/swiper/swiper.min.js")"></script>
+    <script src="@Url.Content("~/assets/vendors/owl-carousel/owl.carousel.min.js")"></script>
+    <script src="@Url.Content("~/assets/vendors/bootstrap-select/js/bootstrap-select.min.js")"></script>
+    <script src="@Url.Content("~/assets/vendors/jquery-ui/jquery-ui.js")"></script>
+    <script src="@Url.Content("~/assets/vendors/wow/wow.js")"></script>
+
+    <!-- Template JS -->
+    <script src="@Url.Content("~/assets/js/eston.js")"></script>
+  
+    
+    @RenderSection("Scripts", required: false)
+   
+</body>
+</html>

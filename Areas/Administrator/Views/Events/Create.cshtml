@@ -1,0 +1,108 @@
+﻿@model ScenePro.Models.Event
+
+@{
+    ViewData["Title"] = "Create";
+}
+
+<h1>Create Event</h1>
+
+<h4>Event</h4>
+<hr />
+
+<!-- CSS for styling and centering the form -->
+<style>
+    .form-container {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        min-height: 70vh; /* Center vertically between header and footer */
+        margin-top: 50px; /* Add space between form and header */
+        margin-bottom: 50px; /* Add space between form and footer */
+    }
+
+    .form-wrapper {
+        border: 2px solid #ccc; /* Border around the form */
+        padding: 20px;
+        border-radius: 10px; /* Rounded corners for a smoother look */
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Adds a slight shadow */
+        background-color: #f9f9f9; /* Optional light background */
+    }
+
+    .form-group {
+        margin-bottom: 15px; /* Adds some spacing between form groups */
+    }
+</style>
+
+<!-- Centered form starts here -->
+<div class="form-container">
+    <div class="form-wrapper col-md-6">
+        <form asp-action="Create" method="post" enctype="multipart/form-data">
+            <!-- enctype is added for file upload -->
+            <div asp-validation-summary="All" class="text-danger"></div>
+
+            <div class="form-group">
+                <label asp-for="EventName" class="control-label"></label>
+                <input asp-for="EventName" class="form-control" />
+                <span asp-validation-for="EventName" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="EventDate" class="control-label"></label>
+                <input asp-for="EventDate" class="form-control" />
+                <span asp-validation-for="EventDate" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="Location" class="control-label"></label>
+                <input asp-for="Location" class="form-control" />
+                <span asp-validation-for="Location" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="Description" class="control-label"></label>
+                <textarea asp-for="Description" class="form-control"></textarea>
+                <span asp-validation-for="Description" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="ImageFile" class="font-weight-bold text-primary"></label>
+                <input asp-for="ImageFile" class="form-control form-control-lg" type="file" accept="image/*" />
+                <span asp-validation-for="ImageFile" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="Organizer" class="control-label"></label>
+                <input asp-for="Organizer" class="form-control" />
+                <span asp-validation-for="Organizer" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="ContactEmail" class="control-label"></label>
+                <input asp-for="ContactEmail" class="form-control" />
+                <span asp-validation-for="ContactEmail" class="text-danger"></span>
+            </div>
+
+            <div class="form-group form-check">
+                <label class="form-check-label">
+                    <input class="form-check-input" asp-for="IsActive" /> @Html.DisplayNameFor(model => model.IsActive)
+                </label>
+            </div>
+
+            <div class="form-group form-check">
+                <label class="form-check-label">
+                    <input class="form-check-input" asp-for="IsDeleted" /> @Html.DisplayNameFor(model => model.IsDeleted)
+                </label>
+            </div>
+
+
+
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
